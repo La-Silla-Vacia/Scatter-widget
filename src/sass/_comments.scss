@@ -4,6 +4,11 @@
   font-family: $font-family-base;
   margin: 0 auto;
   max-width: 48em;
+  transition: opacity $transition;
+}
+
+.comments--hide {
+  opacity: 0;
 }
 
 .comments__point {

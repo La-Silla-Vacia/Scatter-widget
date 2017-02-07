@@ -16,6 +16,7 @@ class app {
   constructor() {
     this.comments = {};
     this.commentPoints = [];
+    this.commentPointData = [];
     this.commentPointsContainer = $('.grid__comments');
     this.commentPointActiveClass = 'comments__point--active';
 
@@ -27,6 +28,8 @@ class app {
       this.drawCommentsOnGrid();
 
       this.createComments = new createComment(this.commentPointsContainer);
+
+      this.startAnimating();
     }
   }
 
@@ -60,6 +63,7 @@ class app {
         const commentPoint = this.commentPointTemplate(el);
         let newElement = document.createElement('div');
         newElement.innerHTML = commentPoint;
+        this.commentPointData.push(el);
         this.commentPoints.push(newElement.childNodes[1]);
       }
     });
@@ -79,9 +83,10 @@ class app {
   }
 
   toggleCommentPoint(el) {
-    $$(`.${this.commentPointActiveClass}`).map((el) => {
-      el.classList.remove(this.commentPointActiveClass);
-    });
+    this.removeActiveClass();
+    this.commentContainer.classList.remove('comments--hide');
+
+    clearInterval(this.interval);
 
     const thisCommentPoint = el.target;
 
@@ -97,8 +102,41 @@ class app {
     this.commentContainer.innerHTML = comment;
   }
 
+  removeActiveClass() {
+    $$(`.${this.commentPointActiveClass}`).map((el) => {
+      el.classList.remove(this.commentPointActiveClass);
+    });
+  }
+
   stringToNumber(string) {
     return parseFloat(string.replace(/\./g, '').replace(/,/g, '.').replace(/[^\d\.]/g, ''));
+  }
+
+  startAnimating() {
+    const animDuration = 5000;
+    const numberOfComments = this.commentPoints.length;
+    let currentComment = 0;
+    this.showComment(this.commentPoints[currentComment]);
+    $(`button[data-id="${currentComment + 1}"]`).classList.add(this.commentPointActiveClass);
+    currentComment += 1;
+
+    this.interval = setInterval(() => {
+      this.commentContainer.classList.remove('comments--hide');
+      this.commentPoints[currentComment].classList.add(this.commentPointActiveClass);
+      console.log(this.commentPointData[currentComment]);
+      this.showComment(this.commentPointData[currentComment]);
+      if (currentComment === numberOfComments - 1) {
+        currentComment = 0;
+      } else {
+        currentComment++;
+      }
+
+      setTimeout(() => {
+        this.commentContainer.classList.add('comments--hide');
+        this.removeActiveClass();
+      }, animDuration - 250);
+    }, animDuration);
+
   }
 }
 
