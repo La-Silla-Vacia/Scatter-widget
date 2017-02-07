@@ -4,14 +4,12 @@ function $(selector) {
   return document.querySelector(selector);
 }
 
-function $$(selector) {
-  return Array.prototype.slice.apply(document.querySelectorAll(selector));
-}
-
 class newComment {
   constructor(container) {
     this.container = container;
     this.active = false;
+
+    this.closeBtnClassName = 'comment-form__close-button';
 
     this.createTemplates();
     this.watch();
@@ -30,7 +28,6 @@ class newComment {
     if (el.target !== this.container) return;
     if (this.active) {
       this.removeInputs();
-      this.active = false;
       return;
     }
 
@@ -48,10 +45,14 @@ class newComment {
     this.formElement.innerHTML = commentForm;
     this.container.insertBefore(this.formElement, this.container.childNodes[0]);
     this.active = true;
+
+    $(`.${this.closeBtnClassName}`).addEventListener('click', this.removeInputs.bind(this));
   }
 
-  removeInputs() {
-    this.formElement.parentNode.removeChild(this.formElement);
+  removeInputs(e) {
+    if (e) e.preventDefault();
+    if (this.formElement) this.formElement.parentNode.removeChild(this.formElement);
+    this.active = false;
   }
 
   getOffset(evt) {

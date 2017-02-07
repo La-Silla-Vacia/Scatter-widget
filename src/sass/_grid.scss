@@ -1,7 +1,12 @@
+@import 'variables';
+
 .grid {
   height: 37.5em;
   position: relative;
   width: 100%;
+  @media (max-width: $first-breaking-point) {
+    height: 20em;
+  }
 }
 
 .grid__title {
@@ -23,6 +28,9 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  @media (max-width: $first-breaking-point) {
+    transform: translateY(15%);
+  }
 }
 
 .grid__title--bottom {
@@ -34,6 +42,9 @@
 .grid__title--left {
   top: 50%;
   transform: translateY(-50%);
+  @media (max-width: $first-breaking-point) {
+    transform: translateY(15%);
+  }
 }
 
 .grid__line {
@@ -49,6 +60,9 @@
 .grid__line--horizontal {
   height: $grid-stroke-size;
   width: calc(100% - 16em);
+  @media (max-width: $first-breaking-point) {
+    width: 100%;
+  }
 }
 
 .grid__line--vertical {
@@ -62,6 +76,10 @@
   position: absolute;
   right: 8em;
   top: 2em;
+  @media (max-width: $first-breaking-point) {
+    left: 1em;
+    right: 1em;
+  }
 }
 
 .comments__comment-data {

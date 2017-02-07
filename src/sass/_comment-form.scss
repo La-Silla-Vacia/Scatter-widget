@@ -3,28 +3,39 @@
 .comment-form {
   background-color: $brand-white;
   border: 1px solid $brand-dark--light;
-  padding: .5em 1em;
+  padding: .5em 1em 1em;
   position: absolute;
   transform: translateX(-50%) translateY(1em);
   width: 20em;
   z-index: 20;
-
-  &::before,
-  &::after {
-    border-bottom: 1em solid $brand-dark--light;
-    border-left: .75em solid transparent;
-    border-right: .75em solid transparent;
-    content: '';
-    height: 0;
-    left: 50%;
-    position: absolute;
-    top: -1em;
-    transform: translateX(-50%);
-    width: 0;
+  @media (max-width: $first-breaking-point) {
+    box-sizing: border-box;
+    left: 0 !important;
+    transform: translateX(0) translateY(1em) !important;
+    width: 100% !important;
   }
+}
 
+.comment-form__triangle {
+  border-bottom: 1em solid $brand-dark--light;
+  border-left: .75em solid transparent;
+  border-right: .75em solid transparent;
+  height: 0;
+  left: 50%;
+  position: absolute;
+  top: -1em;
+  transform: translateX(-50%);
+  width: 0;
+  @media (min-width: $first-breaking-point-min) {
+    left: 50% !important;
+  }
   &::after {
     border-bottom: 1em solid $brand-white;
+    border-left: .75em solid transparent;
+    border-right: .75em solid transparent;
+    content: "";
+    height: 0;
+    position: absolute;
     transform: translateX(-50%) translateY(2px);
   }
 }
@@ -39,8 +50,8 @@
   width: 100%;
 
   &:focus {
-    outline: none;
     border-color: $brand-color;
+    outline: none;
   }
 }
 
@@ -61,5 +72,22 @@
   &:hover {
     background-color: $brand-dark;
     color: $brand-white;
+  }
+}
+
+.comment-form__close-button {
+  background-color: $brand-white;
+  border: 1px solid $brand-dark--light;
+  border-radius: 50%;
+  color: $brand-dark--light;
+  float: right;
+  height: 1.75em;
+  width: 1.75em;
+
+  &:hover,
+  &:focus {
+    border-color: $brand-dark;
+    color: $brand-dark;
+    cursor: pointer;
   }
 }

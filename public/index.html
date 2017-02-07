@@ -56,8 +56,10 @@
 <script id="comment-form--template" type="text/x-handlebars-template">
     <div class="comments__point comments__point--location-indicator" style="top: {{topPercentage}}%; left: {{leftPercentage}}%;"></div>
     <div class="comment-form" style="top: {{topPercentage}}%; left: {{leftPercentage}}%;">
+        <div class="comment-form__triangle" style="left: {{leftPercentage}}%;"></div>
         <form>
-            <label for="comment-form__input">Haga su comentario </label>
+            <label for="comment-form__input">Haga su comentario</label>
+            <button class="comment-form__close-button">x</button>
             <input type="text" id="comment-form__input" name="comentario_percepcion" placeholder="Puedes escribir tu comentario aquí" maxlength="256" class="comment-form__input" >
             <div class="comment-form__description">Recuerde que sus comentarios serán visibles para todos nuestros lectores. <br>Se permite un máximo de 256 caracteres.</div>
             <input type="submit" class="comment-form__submit" value="Enviar">
