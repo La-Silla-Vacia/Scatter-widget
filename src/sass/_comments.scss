@@ -10,6 +10,7 @@
   background-color: $brand-color;
   border: 0;
   border-radius: 50%;
+  cursor: pointer;
   height: 1em;
   position: absolute;
   transform: translateX(-50%) translateY(-50%);
@@ -30,6 +31,10 @@
   width: 1.2em;
 }
 
+.comments__point--location-indicator {
+  background-color: $brand-color--highlight;
+}
+
 .comments__row {
   align-items: center;
   display: flex;
@@ -39,9 +44,9 @@
 
 .comments__avatar {
   border-radius: 50%;
-  height: 6em;
+  height: 5em;
   margin-right: 1em;
-  width: 6em;
+  width: 5em;
 }
 
 .comments__commenter-name {

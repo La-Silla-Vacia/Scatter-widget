@@ -2,6 +2,7 @@
 /*eslint no-undef: "error"*/
 
 const Handlebars = require('handlebars');
+const createComment = require('./_createComment');
 
 function $(selector) {
   return document.querySelector(selector);
@@ -24,6 +25,8 @@ class app {
       this.comments = comentarios.comments;
       this.createTemplates();
       this.drawCommentsOnGrid();
+
+      this.createComments = new createComment(this.commentPointsContainer);
     }
   }
 
