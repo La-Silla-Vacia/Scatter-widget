@@ -35,6 +35,8 @@
       "grid": "celda-2800",
       "user_type": "influencer",
       "user_image": "http://placekitten.com/120/120",
+      "user_function": "Economista Universidad de los Andes, Ex Gerente TransMilenio.",
+      "user_seguidores": 107,
       "timestamp": "1486656002"
     }, {
       "user_profile": "SpinellaC",
@@ -217,13 +219,13 @@
         <img class="comments__avatar" src="{{ user_image }}" alt="A picture of ">
         <div class="comments__meta">
             <h3 class="comments__commenter-name">{{ user_profile }}</h3>
-            <span class="comments__commenter-seguidores">107 Seguidores</span>
-            <p class="comments__commenter-function">Economista Universidad de los Andes, Ex Gerente TransMilenio.</p>
+            <span class="comments__commenter-seguidores">{{ user_seguidores }} Seguidores</span>
+            <p class="comments__commenter-function">{{ user_function }}</p>
         </div>
     </header>
     <div class="comments__comment">
         <p>
-            <span class="comments__comment-data">{{ comment_date }}</span>
+            <span class="comments__comment-data">{{ comment_date }} — </span>
             {{ comentario }}
         </p>
     </div>
