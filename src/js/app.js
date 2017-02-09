@@ -23,6 +23,8 @@ class app {
     this.commentContainer = $('.comments');
     this.allCommentsContainer = $('.comments--all');
 
+    this.userInteracted = false;
+
     if (typeof(comentarios) === "object") {
       this.comments = comentarios.comments;
       this.createTemplates();
@@ -101,6 +103,7 @@ class app {
     this.commentContainer.classList.remove('comments--hide');
 
     clearInterval(this.interval);
+    this.userInteracted = true;
 
     const thisCommentPoint = el.target;
 
@@ -153,8 +156,10 @@ class app {
       }
 
       setTimeout(() => {
-        this.commentContainer.classList.add('comments--hide');
-        this.removeActiveClass();
+        if (!this.userInteracted) {
+          this.commentContainer.classList.add('comments--hide');
+          this.removeActiveClass();
+        }
       }, animDuration - 250);
     }, animDuration);
 
