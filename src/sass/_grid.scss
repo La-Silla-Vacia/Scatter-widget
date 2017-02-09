@@ -81,3 +81,19 @@
     right: 1em;
   }
 }
+
+.grid__caption {
+  bottom: 0;
+  color: $brand-dark--light;
+  font-size: .8em;
+  font-style: italic;
+  font-weight: lighter;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  @media (max-width: $first-breaking-point) {
+    bottom: -2em;
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
