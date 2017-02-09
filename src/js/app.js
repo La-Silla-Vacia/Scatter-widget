@@ -65,11 +65,10 @@ class app {
         if (!el.user_image) el.user_image = './images/undefined.svg';
         (el.user_type == 'influencer') ? el.user_background_image = `background-image:url("${el.user_image}");` : el.user_background_image = '';
 
+        if (!el.user_seguidores) el.user_seguidores = 0;
+
         if (el.timestamp) {
-          const dateEl = document.createElement('span');
-          dateEl.classList.add('comments__comment-data');
-          dateEl.innerHTML = `${this.timeConverter(el.timestamp)} — `;
-          el.comment_date = `${this.timeConverter(el.timestamp)} — `;
+          el.comment_date = this.timeConverter(el.timestamp);
           // el.comment_date.classList.add('comments__comment-data');
         } else {
           el.comment_date = '';
@@ -87,7 +86,7 @@ class app {
   placeCommentPoints() {
     this.commentPoints.map((el) => {
       // this.commentPointsContainer.innerHTML = el;
-      this.commentPointsContainer.appendChild(el);
+      this.commentPointsContainer.insertBefore(el, this.commentPointsContainer.childNodes[0]);
     });
   }
 
@@ -135,7 +134,7 @@ class app {
   }
 
   startAnimating() {
-    const animDuration = 5000;
+    const animDuration = 7000;
     const numberOfComments = this.commentPoints.length;
     let currentComment = 0;
     this.showComment(this.commentPoints[currentComment]);

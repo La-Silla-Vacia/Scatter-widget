@@ -43,7 +43,7 @@
 
 .comment__point--influencer {
   border: .2em solid $brand-color;
-  box-sizing: border-box;
+  box-sizing: border- box;
   height: 3em;
   width: 3em;
   z-index: 5;
@@ -57,12 +57,6 @@
   .tooltip {
     margin-left: -.4em;
     margin-top: 3em;
-
-    &::before,
-    &::after {
-      left: .7em;
-      top: 2.1em;
-    }
   }
 }
 

@@ -35,6 +35,8 @@
       "grid": "celda-2800",
       "user_type": "influencer",
       "user_image": "http://placekitten.com/120/120",
+      "user_function": "Economista Universidad de los Andes, Ex Gerente TransMilenio.",
+      "user_seguidores": 107,
       "timestamp": "1486656002"
     }, {
       "user_profile": "SpinellaC",
@@ -203,8 +205,7 @@
 </script>
 
 <script id="comment-point--template" type="text/x-handlebars-template">
-    <button class="comments__point tooltip--toggle comment__point--{{user_type}}" data-id="{{id}}"
-            style="top: {{topPercentage}}%; left: {{leftPercentage}}%; {{ user_background_image }}">
+    <button class="comments__point tooltip--toggle comment__point--{{user_type}}" data-id="{{id}}" style="top: {{topPercentage}}%; left: {{leftPercentage}}%; {{ user_background_image }}">
         <div class="tooltip">
             <span class="tooltip__heading">Reacción de:</span><br>
             {{ user_profile }}
@@ -217,21 +218,20 @@
         <img class="comments__avatar" src="{{ user_image }}" alt="A picture of ">
         <div class="comments__meta">
             <h3 class="comments__commenter-name">{{ user_profile }}</h3>
-            <span class="comments__commenter-seguidores">107 Seguidores</span>
-            <p class="comments__commenter-function">Economista Universidad de los Andes, Ex Gerente TransMilenio.</p>
+            <span class="comments__commenter-seguidores">{{ user_seguidores }} Seguidores</span>
+            <p class="comments__commenter-function">{{ user_function }}</p>
         </div>
     </header>
     <div class="comments__comment">
         <p>
-            <span class="comments__comment-data">{{ comment_date }}</span>
+            <span class="comments__comment-data">{{ comment_date }} — </span>
             {{ comentario }}
         </p>
     </div>
 </script>
 
 <script id="comment-form--template" type="text/x-handlebars-template">
-    <div class="comments__point comments__point--location-indicator"
-         style="top: {{topPercentage}}%; left: {{leftPercentage}}%;"></div>
+    <div class="comments__point comments__point--location-indicator" style="top: {{topPercentage}}%; left: {{leftPercentage}}%;"></div>
     <div class="comment-form" style="top: {{topPercentage}}%; left: {{leftPercentage}}%;">
         <div class="comment-form__triangle" style="left: {{leftPercentage}}%;"></div>
         <form>

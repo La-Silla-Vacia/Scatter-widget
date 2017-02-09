@@ -20,6 +20,7 @@
   margin-top: 1.5em;
   padding: .15em .5em;
   pointer-events: none;
+  position: relative;
   text-align: left;
   white-space: nowrap;
 
@@ -30,9 +31,9 @@
     border-right: .75em solid transparent;
     content: '';
     height: 0;
-    left: -.2em;
+    left: .6em;
     position: absolute;
-    top: .65em;
+    top: -1em;
     width: 0;
   }
 
