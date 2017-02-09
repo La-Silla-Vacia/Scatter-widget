@@ -21,6 +21,7 @@ class app {
     this.commentPointActiveClass = 'comments__point--active';
 
     this.commentContainer = $('.comments');
+    this.allCommentsContainer = $('.comments--all');
 
     if (typeof(comentarios) === "object") {
       this.comments = comentarios.comments;
@@ -30,6 +31,7 @@ class app {
       this.createComments = new createComment(this.commentPointsContainer);
 
       this.startAnimating();
+      this.listVerifiedComments();
     }
   }
 
@@ -49,7 +51,7 @@ class app {
 
   createCommentPoints() {
     this.comments.map((el, index) => {
-      if (el.comentario !== '') {
+      if (el.comentario) {
         const gridNumber = this.stringToNumber(el.grid);
         const gridRow = Math.floor(gridNumber / 70) + 1;
 
@@ -59,6 +61,19 @@ class app {
         el.topPercentage = topPercentage;
         el.leftPercentage = leftPercentage;
         el.id = index;
+
+        if (!el.user_image) el.user_image = './images/undefined.svg';
+        (el.user_type == 'influencer') ? el.user_background_image = `background-image:url("${el.user_image}");` : el.user_background_image = '';
+
+        if (el.timestamp) {
+          const dateEl = document.createElement('span');
+          dateEl.classList.add('comments__comment-data');
+          dateEl.innerHTML = `${this.timeConverter(el.timestamp)} — `;
+          el.comment_date = `${this.timeConverter(el.timestamp)} — `;
+          // el.comment_date.classList.add('comments__comment-data');
+        } else {
+          el.comment_date = '';
+        }
 
         const commentPoint = this.commentPointTemplate(el);
         let newElement = document.createElement('div');
@@ -72,7 +87,7 @@ class app {
   placeCommentPoints() {
     this.commentPoints.map((el) => {
       // this.commentPointsContainer.innerHTML = el;
-      this.commentPointsContainer.insertBefore(el, this.commentPointsContainer.childNodes[0]);
+      this.commentPointsContainer.appendChild(el);
     });
   }
 
@@ -97,9 +112,16 @@ class app {
     this.showComment(comment);
   }
 
-  showComment(data) {
+  showComment(data, append) {
+    if (!data.user_image) data.user_image = './images/undefined.svg';
     const comment = this.commentTemplate(data);
-    this.commentContainer.innerHTML = comment;
+    if (append) {
+      let newElement = document.createElement('div');
+      newElement.innerHTML = comment;
+      this.allCommentsContainer.appendChild(newElement);
+    } else {
+      this.commentContainer.innerHTML = comment;
+    }
   }
 
   removeActiveClass() {
@@ -123,7 +145,7 @@ class app {
     this.interval = setInterval(() => {
       this.commentContainer.classList.remove('comments--hide');
       this.commentPoints[currentComment].classList.add(this.commentPointActiveClass);
-      console.log(this.commentPointData[currentComment]);
+
       this.showComment(this.commentPointData[currentComment]);
       if (currentComment === numberOfComments - 1) {
         currentComment = 0;
@@ -137,6 +159,37 @@ class app {
       }, animDuration - 250);
     }, animDuration);
 
+  }
+
+  listVerifiedComments() {
+    this.commentPointData.map((el) => {
+      if (el.user_type == 'influencer')
+        this.showComment(el, true);
+    });
+  }
+
+  timeConverter(UNIX_timestamp) {
+    const a = new Date(UNIX_timestamp * 1000);
+    const months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+    const year = a.getFullYear();
+    const month = months[a.getMonth()];
+    const date = a.getDate();
+    // const hour = a.getHours();
+    // const min = a.getMinutes();
+    // const sec = a.getSeconds();
+    const time = date + ' ' + month + ' ' + year;
+    return time;
+  }
+
+  array_flip(trans) {
+    let key, tmp_ar = {};
+    for (key in trans) {
+      if (trans.hasOwnProperty(key)) {
+        tmp_ar[trans[key]] = key;
+      }
+    }
+
+    return tmp_ar;
   }
 }
 

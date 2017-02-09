@@ -1,4 +1,5 @@
 {
 	"class-style": "bem",
-	"attr-name-style": false
+	"attr-name-style": false,
+	"indent-style": false
 }

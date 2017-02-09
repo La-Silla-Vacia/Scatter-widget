@@ -13,6 +13,7 @@
 
 .comments__point {
   background-color: $brand-color;
+  background-size: cover;
   border: 0;
   border-radius: 50%;
   cursor: pointer;
@@ -26,7 +27,7 @@
   &:focus {
     background-color: $brand-color--dark;
     outline: none;
-    z-index: 1;
+    z-index: 6;
   }
 }
 
@@ -40,11 +41,34 @@
   background-color: $brand-color--highlight;
 }
 
+.comment__point--influencer {
+  height: 3em;
+  width: 3em;
+  z-index: 5;
+
+  &:hover,
+  &:focus,
+  &.comments__point--active {
+    border: .2em solid $brand-color--dark;
+  }
+
+  .tooltip {
+    margin-left: -.4em;
+    margin-top: 3em;
+
+    &::before,
+    &::after {
+      left: .7em;
+      top: 2.1em;
+    }
+  }
+}
+
 .comments__row {
   align-items: center;
   display: flex;
   margin-bottom: 1em;
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 .comments__avatar {
@@ -69,4 +93,25 @@
 .comments__commenter-function {
   clear: both;
   float: none;
+}
+
+.comments__comment-data {
+  color: $brand-dark--light;
+  font-size: .8em;
+  text-transform: uppercase;
+}
+
+.comments--animation {
+  background-color: $brand-light-grey;
+  margin-bottom: 2em;
+  margin-top: 4em;
+  padding: 1em 2em;
+}
+
+.comments--all {
+  .comments__comment {
+    border-bottom: 1px solid $brand-dark--light;
+    margin-bottom: 2em;
+    padding-bottom: 1em;
+  }
 }
