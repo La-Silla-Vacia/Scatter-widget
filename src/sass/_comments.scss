@@ -42,6 +42,7 @@
 }
 
 .comment__point--influencer {
+  border: .2em solid $brand-color;
   height: 3em;
   width: 3em;
   z-index: 5;
@@ -49,7 +50,7 @@
   &:hover,
   &:focus,
   &.comments__point--active {
-    border: .2em solid $brand-color--dark;
+    border-color: $brand-color--dark;
   }
 
   .tooltip {
