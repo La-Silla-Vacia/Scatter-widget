@@ -1,34 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Scatter widget</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:700|Roboto+Slab:400,700" rel="stylesheet">
-</head>
-<body>
-
-<main class="widget">
-    <section class="grid">
-        <h2 class="grid__title grid__title--top">Soy optimista</h2>
-        <h2 class="grid__title grid__title--right">Soy santista</h2>
-        <h2 class="grid__title grid__title--bottom">Soy pesimista</h2>
-        <h2 class="grid__title grid__title--left">Soy uribista</h2>
-        <div class="grid__line grid__line--horizontal"></div>
-        <div class="grid__line grid__line--vertical"></div>
-
-        <div class="grid__comments"></div>
-    </section>
-
-    <section class="comments comments--animation"></section>
-
-    <section class="comments comments--all">
-        <h2>Todos los comentarios verificados</h2>
-    </section>
-</main>
-
-<script type="text/javascript">
-  var comentarios = {
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Scatter widget</title><link rel="stylesheet" type="text/css" href="css/styles.css"><link href="https://fonts.googleapis.com/css?family=Lato:700|Roboto+Slab:400,700" rel="stylesheet"></head><body><main class="widget"><section class="grid"><h2 class="grid__title grid__title--top">Soy optimista</h2><h2 class="grid__title grid__title--right">Soy santista</h2><h2 class="grid__title grid__title--bottom">Soy pesimista</h2><h2 class="grid__title grid__title--left">Soy uribista</h2><div class="grid__line grid__line--horizontal"></div><div class="grid__line grid__line--vertical"></div><div class="grid__comments"></div></section><section class="comments comments--animation"></section><section class="comments comments--all"><h2>Todos los comentarios verificados</h2></section></main><script type="text/javascript">var comentarios = {
     "comments": [{
       "user_profile": "jmorelo",
       "comentario": "Cras mattis consectetur purus sit amet fermentum.",
@@ -201,21 +171,13 @@
       "comentario": "Es la \u00fanica opci\u00f3n",
       "grid": "celda-37"
     }]
-  }
-</script>
-
-<script id="comment-point--template" type="text/x-handlebars-template">
-    <button class="comments__point tooltip--toggle comment__point--{{user_type}}" data-id="{{id}}"
+  }</script><script id="comment-point--template" type="text/x-handlebars-template"><button class="comments__point tooltip--toggle comment__point--{{user_type}}" data-id="{{id}}"
             style="top: {{topPercentage}}%; left: {{leftPercentage}}%; {{ user_background_image }}">
         <div class="tooltip">
             <span class="tooltip__heading">Reacción de:</span><br>
             {{ user_profile }}
         </div>
-    </button>
-</script>
-
-<script id="comment--template" type="text/x-handlebars-template">
-    <header class="comments__row">
+    </button></script><script id="comment--template" type="text/x-handlebars-template"><header class="comments__row">
         <img class="comments__avatar" src="{{ user_image }}" alt="A picture of ">
         <div class="comments__meta">
             <h3 class="comments__commenter-name">{{ user_profile }}</h3>
@@ -228,11 +190,7 @@
             <span class="comments__comment-data">{{ comment_date }} — </span>
             {{ comentario }}
         </p>
-    </div>
-</script>
-
-<script id="comment-form--template" type="text/x-handlebars-template">
-    <div class="comments__point comments__point--location-indicator"
+    </div></script><script id="comment-form--template" type="text/x-handlebars-template"><div class="comments__point comments__point--location-indicator"
          style="top: {{topPercentage}}%; left: {{leftPercentage}}%;"></div>
     <div class="comment-form" style="top: {{topPercentage}}%; left: {{leftPercentage}}%;">
         <div class="comment-form__triangle" style="left: {{leftPercentage}}%;"></div>
@@ -246,9 +204,4 @@
             </div>
             <input type="submit" class="comment-form__submit" value="Enviar">
         </form>
-    </div>
-</script>
-
-<script src="js/bundle.js"></script>
-</body>
-</html>
+    </div></script><script src="js/bundle.js"></script></body></html>
